@@ -1,4 +1,4 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.conta;
 
 import java.util.Date;
 import java.util.UUID;
