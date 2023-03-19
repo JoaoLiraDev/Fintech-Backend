@@ -2,7 +2,6 @@ package br.com.fiap.fintech.cliente;
 
 import java.util.Date;
 
-import br.com.fiap.fintech.Endereco;
 
 public class ClienteFisico extends Cliente {
 	private String cpf;

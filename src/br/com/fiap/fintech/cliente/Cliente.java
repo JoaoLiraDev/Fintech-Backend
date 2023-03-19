@@ -2,8 +2,6 @@ package br.com.fiap.fintech.cliente;
 import java.util.Date;
 import java.util.UUID;
 
-import br.com.fiap.fintech.Endereco;
-
 public abstract class Cliente {
 	public UUID id = UUID.randomUUID();
 	public String name;

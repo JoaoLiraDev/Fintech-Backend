@@ -1,4 +1,4 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.cliente;
 
 public class Endereco {
 

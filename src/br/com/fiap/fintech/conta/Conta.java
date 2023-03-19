@@ -3,8 +3,9 @@ import java.util.Date;
 import java.util.UUID;
 
 import br.com.fiap.fintech.cliente.Cliente;
+import br.com.fiap.fintech.cliente.ClienteFisico;
 
-public abstract class Conta {
+public class Conta {
 	public UUID id = UUID.randomUUID();
 	public Cliente titular;
 	public String numero;
@@ -33,7 +34,7 @@ public abstract class Conta {
 	}
 
 
-	public Conta(Cliente titular, String agencia, String numero, float saldo) throws Exception {
+	public Conta(ClienteFisico titular, String numero, double saldo) throws Exception {
 		if (numero.length() == 5 && saldo >= 0) {
 			this.titular = titular;
 			this.numero = numero;
