@@ -3,49 +3,99 @@ import java.util.UUID;
 import java.util.Date;
 
 public class Movimentacoes {
-	public UUID id = UUID.randomUUID();
-	public String tipo;
-	public String descricao;
-	public Date dtVigencia;
-	public double vlMovimentacao;
-	private Conta conta;
-	private Categoria categoria;
-	public Date dtCriacao = new Date();
-	public Date dtAtualizacao = new Date();
+	private UUID id = UUID.randomUUID();
+	private String tipo;
+	private String descricao;
+	private Date dtVigencia;
+	private double vlMovimentacao;
+	private UUID contaId;
+	private UUID categoriaId;
 	
-	public Movimentacoes(String tipo, String descricao, Date dtVigencia, double vlMovimentacao, Conta conta, Categoria categoria) throws Exception{
-		if (conta.isActive()) {
-			this.tipo = tipo; 
-			this.descricao = descricao;
-			this.dtVigencia = dtVigencia;
-			this.vlMovimentacao = vlMovimentacao;
-			this.conta = conta;
-			this.categoria = categoria;
-		} else {
-			throw new Exception("Criacao invalida, verifique o status da conta");
-		}
+	public Movimentacoes(String tipo, String descricao, Date dtVigencia, double vlMovimentacao, UUID conta, UUID categoria) {
+		this.tipo = tipo;
+		this.descricao = descricao;
+		this.dtVigencia = dtVigencia;
+		this.vlMovimentacao = vlMovimentacao;
+		this.contaId = conta;
+		this.categoriaId = categoria;
 		
 	}
 	
-	public Movimentacoes update(String tipo, String descricao, Date dtVigencia, double vlMovimentacao) throws Exception{
-		if (this.conta.isActive()) {
-			this.tipo = tipo; 
-			this.descricao = descricao;
-			this.dtVigencia = dtVigencia;
-			this.vlMovimentacao = vlMovimentacao;
-			this.dtAtualizacao = new Date();
-			return this;
-		} else {
-			throw new Exception("Atualizacao invalida, conta nao esta ativa");
-		}
+	
+	public Movimentacoes(UUID id, String tipo, String descricao, Date dtVigencia, double vlMovimentacao, UUID conta, UUID categoria) {
+		this.id = id;
+		this.tipo = tipo;
+		this.descricao = descricao;
+		this.dtVigencia = dtVigencia;
+		this.vlMovimentacao = vlMovimentacao;
+		this.contaId = conta;
+		this.categoriaId = categoria;
+		
+	}
+	
+	public UUID getId() {
+		return id;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
-	public Conta getConta() {
-		return conta;
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Date getDtVigencia() {
+		return dtVigencia;
+	}
+
+	public void setDtVigencia(Date dtVigencia) {
+		this.dtVigencia = dtVigencia;
+	}
+
+	public double getVlMovimentacao() {
+		return vlMovimentacao;
+	}
+
+	public void setVlMovimentacao(double vlMovimentacao) {
+		this.vlMovimentacao = vlMovimentacao;
+	}
+
+	public UUID getContaId() {
+		return contaId;
+	}
+
+	public void setContaId(UUID contaId) {
+		this.contaId = contaId;
+	}
+
+	public UUID getCategoriaId() {
+		return categoriaId;
+	}
+
+	public void setCategoriaId(UUID categoriaId) {
+		this.categoriaId = categoriaId;
+	}
+
+	
+	public Movimentacoes update(String tipo, String descricao, Date dtVigencia, double vlMovimentacao) {
+		this.tipo = tipo; 
+		this.descricao = descricao;
+		this.dtVigencia = dtVigencia;
+		this.vlMovimentacao = vlMovimentacao;
+		return this;	
 	}
 	
 }

@@ -6,14 +6,55 @@ import br.com.fiap.fintech.cliente.Cliente;
 import br.com.fiap.fintech.cliente.ClienteFisico;
 
 public class Conta {
-	public UUID id = UUID.randomUUID();
-	public Cliente titular;
-	public String numero;
+	private UUID id = UUID.randomUUID();
+	public UUID clienteId;
+	private String numero;
 	private double saldo;
 	private boolean active;
-	public Date dtCriacao = new Date();
-	public Date dtAtualizacao = new Date();
 	
+	public Conta(UUID clienteId, String numero, double saldo) throws Exception {
+		if (numero.length() == 5 && saldo >= 0) {
+			this.clienteId = clienteId;
+			this.numero = numero;
+			this.saldo = saldo;
+			this.active = true;
+		} else {
+			throw new Exception("Numero ou saldo informados sao invalidos!\nnumero apenas cinco digitos e saldo tem que ser maior ou igual a zero.");
+		}
+	}
+	
+	public Conta(UUID id, UUID clienteId, String numero, double saldo, boolean active) throws Exception {
+		if (numero.length() == 5 && saldo >= 0) {
+			this.id = id;
+			this.clienteId = clienteId;
+			this.numero = numero;
+			this.saldo = saldo;
+			this.active = active;
+		} else {
+			throw new Exception("Numero ou saldo informados sao invalidos!\nnumero apenas cinco digitos e saldo tem que ser maior ou igual a zero.");
+		}
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+
+	public String getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+
 	public double getSaldo() {
 		return saldo;
 	}
@@ -33,18 +74,6 @@ public class Conta {
 		this.active = active;
 	}
 
-
-	public Conta(ClienteFisico titular, String numero, double saldo) throws Exception {
-		if (numero.length() == 5 && saldo >= 0) {
-			this.titular = titular;
-			this.numero = numero;
-			this.saldo = saldo;
-			this.active = true;
-		} else {
-			throw new Exception("Numero ou saldo informados sao invalidos!\nnumero apenas cinco digitos e saldo tem que ser maior ou igual a zero.");
-		}
-	}
-	
 	
 	public double consultarSaldo() {
 		return this.saldo;

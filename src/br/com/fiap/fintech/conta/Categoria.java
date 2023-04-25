@@ -1,21 +1,34 @@
 package br.com.fiap.fintech.conta;
 
-import java.util.Date;
 import java.util.UUID;
 
 public class Categoria {
-	public UUID id = UUID.randomUUID();
-	public String nmCategoria;
-	public Date dtCriacao = new Date();
-	public Date dtAtualizacao = new Date();
+	private UUID id = UUID.randomUUID();
+	private String nmCategoria;
 	
 	public Categoria(String nmCategoria) {
 		this.nmCategoria = nmCategoria;
 	}
 	
-	public Categoria atualizar(String nmCategoria) {
+	public Categoria(UUID id, String nmCategoria) {
 		this.nmCategoria = nmCategoria;
-		this.dtAtualizacao = new Date();
-		return this;
+		this.id = id;
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getNmCategoria() {
+		return nmCategoria;
+	}
+
+	public void setNmCategoria(String nmCategoria) {
+		this.nmCategoria = nmCategoria;
+	}
+	
 }

@@ -1,29 +1,48 @@
 package br.com.fiap.fintech;
 
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.UUID;
 
-import br.com.fiap.fintech.cliente.ClienteFisico;
-import br.com.fiap.fintech.cliente.Endereco;
+import br.com.fiap.fintech.conta.Categoria;
 import br.com.fiap.fintech.conta.Conta;
+import br.com.fiap.fintech.conta.dao.CategoriaDAO;
+import br.com.fiap.fintech.conta.dao.ContaDAO;
+import br.com.fiap.fintech.core.ConnectorManager;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Endereco enderecoCliente1 = new Endereco("06444000", "Barueri", "São Paulo", "Jardim Paulista", "XPTO", 62, "Super Mercado Verde", "Ap 67");
+		// ID do usuário criado no banco via script: fd188ea8-ebba-4932-9cc7-8fca717e1abf
 		
-		ClienteFisico cliente1 = new ClienteFisico("Vitor", "teste@gmail.com", "123456", new Date(), "11940037479", enderecoCliente1, "23937917870");
+		UUID id = UUID.fromString("fd188ea8-ebba-4932-9cc7-8fca717e1abf");
+		Conta contaTeste = new Conta(id,  "67561", 0);
+		
+		ContaDAO contaDao = new ContaDAO();
+		
+//		contaDao.cadastrar(contaTeste);
+		
+		List<Conta> contaResult = contaDao.listar();
+		
+		for (Conta item : contaResult) {
+			System.out.println("Conta" + item.getId() + " " + item.getNumero() + " " + item.getSaldo());
+		}
+//		Categoria categoriaTeste = new Categoria("Viagens");
 
-		
-		Conta conta1 = new Conta(cliente1, "89455", 0.0);
-		System.out.println("Antiga senha;  " + cliente1.getPassword());
-		cliente1.alterarSenha("654321");
-		System.out.println("Nova senha:  " + cliente1.getPassword());
-		
-		System.out.println("Validar cliente:  " + cliente1.validarCliente("teste@gmail.com", "654321"));
-		
-		conta1.depositar(500);
-		System.out.println("Novo Saldo:  " + conta1.consultarSaldo());
-		
+		CategoriaDAO dao = new CategoriaDAO();
+
+//		dao.cadastrar(categoriaTeste);
+
+		List<Categoria> categoriaResult = dao.listar();
+
+		for (Categoria item : categoriaResult) {
+			System.out.println(item.getId() + " " + item.getNmCategoria());
+		}
+
 	}
 
 }
