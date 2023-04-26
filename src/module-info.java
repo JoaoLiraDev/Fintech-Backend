@@ -6,4 +6,5 @@
  *
  */
 module Fintech {
+	requires java.sql;
 }

@@ -1,10 +1,5 @@
 package br.com.fiap.fintech;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,7 +7,6 @@ import br.com.fiap.fintech.conta.Categoria;
 import br.com.fiap.fintech.conta.Conta;
 import br.com.fiap.fintech.conta.dao.CategoriaDAO;
 import br.com.fiap.fintech.conta.dao.ContaDAO;
-import br.com.fiap.fintech.core.ConnectorManager;
 
 public class Main {
 
